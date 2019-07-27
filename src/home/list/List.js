@@ -7,7 +7,13 @@ import ListItem from './ListItem';
 function List(props) {
   return (
     <div className="List">
-      {props.articles.map(article => <ListItem data={article.data} toggleDetails={props.toggleDetails} />)}
+      {props.articles.map(article =>
+        <ListItem
+          key={article.data.url}
+          data={article.data}
+          toggleDetails={props.toggleDetails}
+        />
+      )}
     </div>
   );
 }
