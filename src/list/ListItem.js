@@ -8,7 +8,7 @@ function ListItem(props) {
 
   return (
     <div className="ListItem">
-      <div className="title">{props.data.title}</div>
+      <a className="title" href={props.data.url}><h3>{props.data.title}</h3></a>
       <div className="info">
       <div className="subreddit">r/{props.data.subreddit}</div>
       <div className="spacer">·</div>

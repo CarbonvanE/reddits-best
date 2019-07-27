@@ -26,17 +26,19 @@ class App extends Component {
     if (this.state.articles) {
       return (
         <div className="App">
-          <div className="top">
-            <h1>Home</h1>
-            <h2>Top 10 posts</h2>
+          <div className="content">
+            <div className="top">
+              <h1>Home</h1>
+              <h2>Top 10 posts</h2>
+            </div>
+            <List articles={this.state.articles}/>
           </div>
-          <List articles={this.state.articles}/>
         </div>
       );
     } else if (this.state.fetchingError) {
-      return <div>Something went wrong while fetching the articles.</div>
+      return <div className="error-message">Something went wrong while fetching the articles.</div>
     } else {
-      return <div>Fetching the articles...</div>
+      return <div className="fetching-message">Fetching the articles...</div>
     }
   }
 }

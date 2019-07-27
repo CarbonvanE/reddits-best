@@ -1,2 +1,28 @@
+@import './styling-variables.scss';
+
 .App {
+  display: flex;
+  justify-content: center;
+  background-color: $grey100;
+
+
+  .content {
+    width: 680px;
+    max-width: 100%;
+    margin-top: 80px;
+
+    .top {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.error-message,
+.fetching-message {
+  width: 100vw;
+  line-height: 100vh;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: $blue600;
 }

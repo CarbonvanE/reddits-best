@@ -1,2 +1,53 @@
+@import './../styling-variables.scss';
+
 .ListItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  padding: 22px;
+  margin-bottom: 24px;
+  border: solid 1px $grey200;
+  border-radius: 4px;
+
+  .title {
+    margin-bottom: 15px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  h3:hover {
+    color: $blue800;
+    transition: color 0.1s;
+  }
+
+  .info {
+    display: flex;
+    font-size: 18px;
+    font-weight: 600;
+
+    .subreddit {
+      color: $blue400;
+      cursor: pointer;
+    }
+
+    .subreddit:hover {
+      color: $blue800;
+      transition: color 0.3s;
+    }
+
+    .spacer {
+      width: 18px;
+      text-align: center;
+      color: $grey500;
+    }
+
+    .points {
+      color: $grey500;
+
+      .score::after {
+        content: " ";
+      }
+    }
+  }
 }
