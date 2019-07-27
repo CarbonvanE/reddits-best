@@ -12,7 +12,7 @@ function Home(props) {
           <h1>Home</h1>
           <h2>Top 10 posts</h2>
         </div>
-        <List articles={props.articles}/>
+        <List articles={props.articles} toggleDetails={props.toggleDetails} />
       </div>
     </div>
   );

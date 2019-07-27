@@ -7,7 +7,8 @@ import Home from './home/Home';
 class App extends Component {
   state = {
     articles: null,
-    fetchingError: false
+    fetchingError: false,
+    details: false
   }
 
   componentDidMount() {
@@ -22,11 +23,12 @@ class App extends Component {
     )
   }
 
+
   render() {
     return (
       <div className="App">
         {!this.state.articles && <div className="fetching-message">Fetching the articles...</div>}
-        {this.state.articles && <Home articles={this.state.articles} />}
+        {this.state.articles && <Home articles={this.state.articles} toggleDetails={details => this.setState({ details })}/>}
       </div>
     )
   }
