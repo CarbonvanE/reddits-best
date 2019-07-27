@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
 
-import List from './list/List';
+import Home from './home/Home';
 
 
 class App extends Component {
@@ -23,23 +23,12 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.articles) {
-      return (
-        <div className="App">
-          <div className="content">
-            <div className="top">
-              <h1>Home</h1>
-              <h2>Top 10 posts</h2>
-            </div>
-            <List articles={this.state.articles}/>
-          </div>
-        </div>
-      );
-    } else if (this.state.fetchingError) {
-      return <div className="error-message">Something went wrong while fetching the articles.</div>
-    } else {
-      return <div className="fetching-message">Fetching the articles...</div>
-    }
+    return (
+      <div className="App">
+        {!this.state.articles && <div className="fetching-message">Fetching the articles...</div>}
+        {this.state.articles && <Home articles={this.state.articles} />}
+      </div>
+    )
   }
 }
 
