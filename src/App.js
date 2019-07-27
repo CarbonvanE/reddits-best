@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import List from './List';
+
+
 class App extends Component {
   state = {
     articles: null,
+    fetchingError: false
   }
 
   componentDidMount() {
@@ -11,17 +15,25 @@ class App extends Component {
       .then(r => {
         if (r.status === 200) {
           r.json().then(json => this.setState({ articles: json.data.children }))
+        } else {
+          this.setState({ fetchingError: true })
         }
       }
     )
   }
 
   render() {
-    return (
-      <div className="App">
-        Hello world!
-      </div>
-    );
+    if (this.state.articles) {
+      return (
+        <div className="App">
+          <List articles={this.state.articles}/>
+        </div>
+      );
+    } else if (this.state.fetchingError) {
+      return <div>Something went wrong while fetching the articles.</div>
+    } else {
+      return <div>Fetching the articles...</div>
+    }
   }
 }
 
