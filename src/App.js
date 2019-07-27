@@ -14,7 +14,7 @@ class App extends Component {
     fetch('https://www.reddit.com/best.json')
       .then(r => {
         if (r.status === 200) {
-          r.json().then(json => this.setState({ articles: json.data.children }))
+          r.json().then(json => this.setState({ articles: json.data.children.slice(0, 10) }))
         } else {
           this.setState({ fetchingError: true })
         }
