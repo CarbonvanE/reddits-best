@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
 
-import List from './List';
+import List from './list/List';
 
 
 class App extends Component {
@@ -26,6 +26,10 @@ class App extends Component {
     if (this.state.articles) {
       return (
         <div className="App">
+          <div className="top">
+            <h1>Home</h1>
+            <h2>Top 10 posts</h2>
+          </div>
           <List articles={this.state.articles}/>
         </div>
       );
