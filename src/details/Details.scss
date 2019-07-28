@@ -1,0 +1,78 @@
+@import './../styling-variables.scss';
+
+.Details {
+  position: fixed;
+  top: 0vh;
+  left: 0vw;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  background-color: $grey100;
+
+  // Fade in animation
+  animation: fade-in 0.4s ease-out;
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      top: -100vh;
+    }
+    to {
+      opacity: 1;
+      top: 0vh;
+    }
+  }
+
+  .content {
+    width: $standard-width;
+    max-width: 100%;
+    margin-top: 60px;
+
+    // Back button
+    .back {
+      display: flex;
+      align-items: center;
+      font-size: 22px;
+      font-weight: 600;
+      color: $blue400;
+      cursor: pointer;
+
+      .Icon {
+        margin-right: 7px;
+        fill: $blue400;
+      }
+    }
+
+    .back:hover {
+      color: $blue600;
+      transition: color 0.25s;
+
+      .Icon {
+        fill: $blue600;
+        transition: fill 0.25s;
+      }
+    }
+
+    // Top section
+    .top {
+      margin: 25px 0 75px 0;
+
+      a {
+        text-decoration: none;
+      }
+
+      a:hover > h1 {
+        color: $blue800;
+      }
+    }
+  }
+
+  // Error message
+  .error-message {
+    line-height: 30vh;
+    font-size: 18px;
+    font-weight: 500;
+    font-style: italic;
+    color: $blue600;
+  }
+}
