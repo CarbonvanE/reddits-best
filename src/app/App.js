@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import './App.scss';
 
 import Home from './home/Home';
@@ -9,7 +10,6 @@ class App extends Component {
   state = {
     articles: null,
     fetchingError: false,
-    details: false
   }
 
   componentDidMount() {
@@ -27,11 +27,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        {!this.state.articles && <div className="fetching-message">Fetching the articles...</div>}
-        {this.state.articles && <Home articles={this.state.articles} toggleDetails={details => this.setState({ details })} />}
-        {this.state.details && <Details subreddit={this.state.details} toggleDetails={() => this.setState({ details: false })} />}
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          {!this.state.articles && <div className="fetching-message">Fetching the articles...</div>}
+          {this.state.articles && <Home articles={this.state.articles} />}
+          <Route path="/:subreddit" component={Details} />}
+        </div>
+      </BrowserRouter>
     )
   }
 }

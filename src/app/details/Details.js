@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Details.scss';
 
 import Info from './Info';
@@ -12,7 +13,7 @@ class Details extends Component {
   }
 
   componentDidMount() {
-    fetch(`https://www.reddit.com/r/${this.props.subreddit}/about.json`)
+    fetch(`https://www.reddit.com/r/${this.props.match.params.subreddit}/about.json`)
       .then(r => {
         if (r.status === 200) r.json().then(json => this.setState({ details: json.data }))
         else this.setState({ fetchingError: true })
@@ -25,14 +26,14 @@ class Details extends Component {
     return (
       <div className="Details">
         <div className="content">
-          <div className="back" onClick={() => this.props.toggleDetails(false)}>
+          <Link className="back" to="/">
             <Icon />
             <span>Home</span>
-          </div>
+          </Link>
 
           <div className="top">
             <a href={this.state.details ? `https://www.reddit.com${this.state.details.url}` : "#"}>
-              <h1>r/{this.props.subreddit}</h1>
+              <h1>r/{this.props.match.params.subreddit}</h1>
             </a>
             <h2>Subreddit details</h2>
           </div>
