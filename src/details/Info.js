@@ -1,11 +1,10 @@
 import React from 'react';
 import './Info.scss';
 
-function Info(props) {
-  const formatNumber = x => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  }
+import { formatDotNotation } from './../genericFunctions';
 
+
+function Info(props) {
   return (
     <div className="Info">
       <div className="section">
@@ -18,7 +17,7 @@ function Info(props) {
       </div>
       <div className="section">
         <h3>Subscriber count</h3>
-        <h4>{formatNumber(props.details.subscribers)}</h4>
+        <h4>{formatDotNotation(props.details.subscribers)}</h4>
       </div>
     </div>
   );
