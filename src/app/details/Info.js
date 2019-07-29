@@ -1,7 +1,7 @@
 import React from 'react';
 import './Info.scss';
 
-import { formatDotNotation } from './../genericFunctions';
+import { formatDotNotation } from './../../genericFunctions';
 
 
 function Info(props) {

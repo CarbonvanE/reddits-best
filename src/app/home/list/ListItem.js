@@ -1,7 +1,7 @@
 import React from 'react';
 import './ListItem.scss';
 
-import { formatDotNotation } from './../../genericFunctions';
+import { formatDotNotation } from './../../../genericFunctions';
 
 
 function ListItem(props) {
