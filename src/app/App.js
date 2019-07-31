@@ -15,11 +15,8 @@ class App extends Component {
   componentDidMount() {
     fetch('https://www.reddit.com/best.json')
       .then(r => {
-        if (r.status === 200) {
-          r.json().then(json => this.setState({ articles: json.data.children.slice(0, 10) }))
-        } else {
-          this.setState({ fetchingError: true })
-        }
+        if (r.status === 200) r.json().then(json => this.setState({ articles: json.data.children.slice(0, 10) }))
+        else this.setState({ fetchingError: true })
       }
     )
   }
@@ -29,6 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         {!this.state.articles && <div className="fetching-message">Fetching the articles...</div>}
+        {this.state.fetchingError && <div className="error-message">Something went wrong while fetching the articles.</div>}
         {this.state.articles && <Home articles={this.state.articles} toggleDetails={details => this.setState({ details })} />}
         {this.state.details && <Details subreddit={this.state.details} toggleDetails={() => this.setState({ details: false })} />}
       </div>
